@@ -5,7 +5,9 @@
     padding: 40px; /* Padding inside the container */
     margin-top: 10%; /* Top margin of 10% */
 }
-
+.login-text {
+    text-align:center;
+}
 /* Styles for form groups */
 .form-group {
     margin-bottom: 20px; /* Bottom margin for spacing between form groups */
@@ -20,7 +22,7 @@
 
 /* Styles for form controls */
 .form-control {
-    width: 40%; /* Width of form controls */
+    width: 100%; /* Width of form controls */
     padding: 8px; /* Padding inside form controls */
     font-size: 16px; /* Font size of form controls */
     border: 1px solid #ccc; /* Border around form controls */

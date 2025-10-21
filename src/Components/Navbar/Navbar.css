@@ -67,7 +67,7 @@ nav {
 
 /* Styling for the logo in the navbar */
 .nav__logo {
-    padding-left: 2em;
+    padding-left: 1em;
     font-size: 2rem;
     font-weight: 600;
     color: #0d213f;

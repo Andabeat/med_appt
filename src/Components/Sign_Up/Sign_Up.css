@@ -32,8 +32,8 @@
 
 /* Styles for additional signup text */
 .signup-text1 {
-    grid-column: -1 / 3; /* Span from second to third column from the end */
-    text-align: right; /* Right-align text */
+    grid-column: 1 / 4; /* Span across all three columns */
+    text-align: center; /* Right-align text */
 }
 
 .signup-text1 span {
