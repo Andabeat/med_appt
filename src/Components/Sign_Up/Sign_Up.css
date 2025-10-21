@@ -21,6 +21,7 @@
     display: grid; /* Use grid layout for the element */
     grid-template-columns: 0.1fr 1.5fr 8fr; /* Define columns with fractional widths */
     grid-gap: 10px; /* Set the gap between grid items */
+    margin-top: 60px;
 }
 
 /* Styles for the main signup text */
@@ -56,10 +57,10 @@
 }
 
 /* Styles for the signup heading */
-.signup h1 {
+.signup-form h1 {
     margin-bottom: 20px; /* Add bottom margin to the heading */
     text-align: center; /* Center-align text */
-    color: #3c79a7; /* Set text color */
+    color:  #094067; /* Set text color */
     letter-spacing: .1em; /* Add letter-spacing between characters */
 }
 
