@@ -19,7 +19,8 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          
+          <Route path="/instant-consultation" element={<InstantConsultation />} />
+
           {/* 404 fallback route */}
           <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
