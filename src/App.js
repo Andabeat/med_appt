@@ -7,6 +7,8 @@ import LandingPage from './Components/Landing_Page/Landing_Page';
 import SignUp from './Components/Sign_Up/Sign_Up';
 import Login from './Components/Login/Login';
 import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultation';
+import FindDoctorSearch from './Components/FindDoctorSearch/FindDoctorSearch';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/instant-consultation" element={<InstantConsultation />} />
+          <Route path="/find-doctor" element={<FindDoctorSearch />} />
 
           {/* 404 fallback route */}
           <Route path="*" element={<div>Page Not Found</div>} />
