@@ -4,18 +4,22 @@ import './DoctorCard.css';
 
 const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
   const [showForm, setShowForm] = useState(false);
+  const [appointment, setAppointment] = useState(null);
 
   // Handle Book Appointment click
   const handleBookClick = () => setShowForm(true);
 
   // Handle form submission
   const handleFormSubmit = (formData) => {
-    // For now, just show a confirmation alert
     alert(
       `Appointment booked with Dr. ${name} for ${formData.appointmentDate} at ${formData.appointmentTime}. Patient: ${formData.name}, Phone: ${formData.phoneNumber}`
     );
-    setShowForm(false); // Optionally reset form display
+    setAppointment(formData); // Save appointment details
+    setShowForm(false);
   };
+
+  // Handle cancel
+  const handleCancel = () => setAppointment(null);
 
   return (
     <div className="doctor-card-container">
@@ -45,18 +49,32 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
           </div>
         </div>
 
-        <div>
-          {!showForm ? (
+        <div className="doctor-card-options-container">
+          {!appointment && !showForm && (
             <button className="book-appointment-btn" onClick={handleBookClick}>
               <div>Book Appointment</div>
               <div>No Booking Fee</div>
             </button>
-          ) : (
+          )}
+          {showForm && (
             <AppointmentForm
               doctorName={name}
               doctorSpeciality={speciality}
               onSubmit={handleFormSubmit}
             />
+          )}
+          {appointment && (
+            <div className="appointment-details">
+              <p>
+                <strong>Appointment booked:</strong> <br />
+                {appointment.appointmentDate} at {appointment.appointmentTime} <br />
+                Patient: {appointment.name} <br />
+                Phone: {appointment.phoneNumber}
+              </p>
+              <button className="cancel-appointment-btn" onClick={handleCancel}>
+                Cancel Appointment
+              </button>
+            </div>
           )}
         </div>
       </div>

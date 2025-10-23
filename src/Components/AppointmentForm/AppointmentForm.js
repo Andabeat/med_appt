@@ -11,13 +11,13 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    // Validation logic
+    const numbersOnly = phoneNumber.replace(/\D/g, '');
     if (!name.trim()) {
       setError('Please enter your name.');
       return;
     }
-    if (!phoneNumber.match(/^\d{10}$/)) {
-      setError('Please enter a valid 10-digit phone number.');
+    if (numbersOnly.length !== 10) {
+      setError('Please enter a valid 10-digit phone number (digits only, e.g. 5551237890).');
       return;
     }
     if (!appointmentDate) {
@@ -29,9 +29,9 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
       return;
     }
 
-    // If all fields are valid, clear error and submit
     setError('');
-    onSubmit({ name, phoneNumber, appointmentDate, appointmentTime });
+    // Pass numbersOnly for backend if digits only required, or phoneNumber for original format
+    onSubmit({ name, phoneNumber: numbersOnly, appointmentDate, appointmentTime });
     setName('');
     setPhoneNumber('');
     setAppointmentDate('');
