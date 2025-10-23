@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import AppointmentForm from '../AppointmentForm/AppointmentForm';
 import './DoctorCard.css';
 
-const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
+// Accept onBookAppointment as a prop!
+const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onBookAppointment }) => {
   const [showForm, setShowForm] = useState(false);
   const [appointment, setAppointment] = useState(null);
 
@@ -11,11 +12,18 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
 
   // Handle form submission
   const handleFormSubmit = (formData) => {
-    alert(
-      `Appointment booked with Dr. ${name} for ${formData.appointmentDate} at ${formData.appointmentTime}. Patient: ${formData.name}, Phone: ${formData.phoneNumber}`
-    );
     setAppointment(formData); // Save appointment details
     setShowForm(false);
+
+    // Call parent notification function if provided
+    if (onBookAppointment) {
+      onBookAppointment(
+        name,
+        formData.name,
+        formData.appointmentDate,
+        formData.appointmentTime
+      );
+    }
   };
 
   // Handle cancel

@@ -41,3 +41,27 @@
 .appointment-card__cancel-btn:hover {
   background-color: #cc0000;
 }
+.notification-box {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  background: #00aaff;
+  color: #fff;
+  padding: 18px 30px;
+  border-radius: 8px;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  z-index: 999;
+}
+
+.notification-close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 26px;
+  margin-left: 16px;
+  cursor: pointer;
+  line-height: 1;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './FindDoctorSearch.css';
 import DoctorCard from '../DoctorCard/DoctorCard';
+import Notification from '../Notification/Notification'; // Use correct path if needed
 
 const initSpeciality = [
   'Dentist',
@@ -60,10 +61,18 @@ const FindDoctorSearch = () => {
   const [doctorResultHidden, setDoctorResultHidden] = useState(true);
   const [searchDoctor, setSearchDoctor] = useState('');
   const [specialities] = useState(initSpeciality);
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState('');
 
   const handleDoctorSelect = (speciality) => {
     setSearchDoctor(speciality);
     setDoctorResultHidden(true);
+  };
+  const handleAppointmentBooked = (doctor, patient, date, time) => {
+    setNotificationMessage(
+      `Appointment booked!\nDoctor: ${doctor}\nPatient: ${patient}\nDate: ${date}\nTime: ${time}`
+    );
+    setShowNotification(true);
   };
 
   // Filter doctors based on current search input or selection
@@ -146,14 +155,21 @@ const FindDoctorSearch = () => {
                 experience={doctor.experience}
                 ratings={doctor.ratings}
                 profilePic={doctor.profilePic}
+                onBookAppointment={handleAppointmentBooked}
               />
             ))
           )}
         </div>
       </center>
+
+      {showNotification && (
+        <Notification
+          message={notificationMessage}
+          onClose={() => setShowNotification(false)}
+        />
+      )}
     </div>
   );
 };
 
 export default FindDoctorSearch;
-
