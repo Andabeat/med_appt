@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import AppointmentForm from '../AppointmentForm/AppointmentForm';
 import './DoctorCard.css';
 
 const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
+  const [showForm, setShowForm] = useState(false);
+
+  // Handle Book Appointment click
+  const handleBookClick = () => setShowForm(true);
+
+  // Handle form submission
+  const handleFormSubmit = (formData) => {
+    // For now, just show a confirmation alert
+    alert(
+      `Appointment booked with Dr. ${name} for ${formData.appointmentDate} at ${formData.appointmentTime}. Patient: ${formData.name}, Phone: ${formData.phoneNumber}`
+    );
+    setShowForm(false); // Optionally reset form display
+  };
+
   return (
     <div className="doctor-card-container">
       <div className="doctor-card-details-container">
@@ -31,10 +46,18 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
         </div>
 
         <div>
-          <button className="book-appointment-btn">
-            <div>Book Appointment</div>
-            <div>No Booking Fee</div>
-          </button>
+          {!showForm ? (
+            <button className="book-appointment-btn" onClick={handleBookClick}>
+              <div>Book Appointment</div>
+              <div>No Booking Fee</div>
+            </button>
+          ) : (
+            <AppointmentForm
+              doctorName={name}
+              doctorSpeciality={speciality}
+              onSubmit={handleFormSubmit}
+            />
+          )}
         </div>
       </div>
     </div>
