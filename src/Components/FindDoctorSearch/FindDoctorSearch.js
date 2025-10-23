@@ -32,6 +32,27 @@ const doctorList = [
     experience: "8",
     ratings: "4.7",
     profilePic: "DrMike.png"
+  },
+  {
+    name: "Dr. Luke Smith",
+    speciality: "General Physician",
+    experience: "9",
+    ratings: "4.8",
+    profilePic: "DrLuke.jpg"
+  },
+  {
+    name: "Dr. Jane Williams",
+    speciality: "Gynecologist/Obstetrician",
+    experience: "8",
+    ratings: "4.6",
+    profilePic: "DrJane.jpg"
+  },
+  {
+    name: "Dr. Brad Wade",
+    speciality: "Dentist",
+    experience: "9",
+    ratings: "4.7",
+    profilePic: "DrBrad.jpg"
   }
 ];
 
