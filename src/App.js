@@ -6,7 +6,6 @@ import Navbar from './Components/Navbar/Navbar';
 import LandingPage from './Components/Landing_Page/Landing_Page';
 import SignUp from './Components/Sign_Up/Sign_Up';
 import Login from './Components/Login/Login';
-import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultation';
 import FindDoctorSearch from './Components/FindDoctorSearch/FindDoctorSearch';
 
 
@@ -21,7 +20,6 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/instant-consultation" element={<InstantConsultation />} />
           <Route path="/find-doctor" element={<FindDoctorSearch />} />
 
           {/* 404 fallback route */}

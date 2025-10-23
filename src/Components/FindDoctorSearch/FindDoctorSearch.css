@@ -121,13 +121,16 @@
 
 .search-doctor-input-results {
     position: absolute;
-    top: 55%;
+    top: 52%;
     left: 0;
     width: 100%;
     z-index: 5;
     height: 420px;
     margin-top: 2px;
     border: 1px solid #555;
+}
+.search-doctor-input-results.hide {
+  display: none !important;
 }
 
 .search-doctor-result-item {

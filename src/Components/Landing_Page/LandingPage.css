@@ -30,7 +30,9 @@
     font-weight: 300;
     text-align: center;
     padding: 12px 14rem;
-    color:#969BA5;
+    color: #222;
+    margin: 0 auto 60px;
+    width: 60%;
 }
 
 .hero-section .button {

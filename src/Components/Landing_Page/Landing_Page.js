@@ -23,7 +23,7 @@ const Landing_Page = () => {
             </div>
 
             <h4>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque at quae ducimus. Suscipit omnis quibusdam non cum rem voluptatem!
+              At StayHealthy, your health is our highest priority. We believe medical care should be accessible, compassionate, and tailored to every individual. From routine checkups to expert advice, our team is here to support your journey to lifelong wellness.
             </h4>
             <a href="#services">
               <button className="button">Get Started</button>
