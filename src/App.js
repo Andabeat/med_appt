@@ -7,6 +7,7 @@ import LandingPage from './Components/Landing_Page/Landing_Page';
 import SignUp from './Components/Sign_Up/Sign_Up';
 import Login from './Components/Login/Login';
 import FindDoctorSearch from './Components/FindDoctorSearch/FindDoctorSearch';
+import Notification from './Components/Notification/Notification';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/find-doctor" element={<FindDoctorSearch />} />
-
+          <Route path="/notification" element={<Notification />} />
           {/* 404 fallback route */}
           <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
