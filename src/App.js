@@ -8,6 +8,7 @@ import SignUp from './Components/Sign_Up/Sign_Up';
 import Login from './Components/Login/Login';
 import FindDoctorSearch from './Components/FindDoctorSearch/FindDoctorSearch';
 import Notification from './Components/Notification/Notification';
+import ReviewForm from './Components/ReviewForm/ReviewForm';
 
 function App() {
   // Global notification state
@@ -52,7 +53,8 @@ function App() {
               <FindDoctorSearch onBookAppointment={handleGlobalAppointment} />
             }
           />
-          {/* Remove manual Notification route, not needed anymore */}
+          <Route path="/reviews" element={<ReviewForm />} />
+         
           {/* 404 fallback route */}
           <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
