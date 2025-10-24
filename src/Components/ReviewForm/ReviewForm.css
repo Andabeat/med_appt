@@ -1,6 +1,6 @@
 .review-container {
-  margin: 30px auto;
-  max-width: 1000px;
+  margin: 140px auto;
+  max-width: 1200px;
   background: #fff;
   border-radius: 8px;
   padding: 25px;
@@ -15,15 +15,24 @@
 }
 
 .review-table {
+  table-layout: auto;  
   width: 100%;
   border-collapse: collapse;
 }
+.review-table tr {
+    height: auto;
+  }
+  .review-table td {
+    vertical-align: middle;
+  }
 
 .review-table th,
 .review-table td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #eaeaea;
+  vertical-align: middle;
+  box-sizing: border-box;
 }
 
 .review-table thead th {
@@ -32,17 +41,21 @@
 }
 
 .doctor-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.doctor-pic {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  object-fit: cover;
-}
+    display: inline-flex;      /* inline-flex fixes vertical behavior inside table cells */
+    align-items: center;       /* true vertical centering */
+    justify-content: flex-start;
+    gap: 10px;
+    line-height: normal;  
+  }
+  
+  .doctor-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;           /* keeps image from resizing unevenly */
+    display: block; 
+  }
 
 .review-btn {
   background-color: #007bff;
@@ -101,6 +114,10 @@
     border-radius: 7px;
     padding: 8px 10px;
     font-size: 1em;
+    max-width: 200px;    /* or adjust as needed to fit your table */
+    word-wrap: break-word;
+    white-space: pre-line; /* preserves line breaks */
+    overflow-wrap: break-word;
   }
   
   .modal-overlay {
