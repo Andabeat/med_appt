@@ -50,21 +50,25 @@ const Navbar = () => {
   }, [showDropdown]);
 
   useEffect(() => {
-    const storedEmail = sessionStorage.getItem("email");
-    const storedUsername = sessionStorage.getItem("username");
-
-    if (storedEmail) {
-      setIsLoggedIn(true);
-
-      // If username already saved (from Sign_Up), use it
-      if (storedUsername) {
-        setUsername(storedUsername);
-      } else {
-        // Extract from email if not saved
-        const simpleName = storedEmail.split("@")[0];
-        setUsername(simpleName);
+    const updateUsername = () => {
+      const storedEmail = sessionStorage.getItem("email");
+      const storedUsername = sessionStorage.getItem("username");
+  
+      if (storedEmail) {
+        setIsLoggedIn(true);
+        setUsername(storedUsername || storedEmail.split("@")[0]);
       }
-    }
+    };
+  
+    // Run when component loads
+    updateUsername();
+  
+    // Listen for storage changes (e.g. from ProfileCard)
+    window.addEventListener("storage", updateUsername);
+  
+    return () => {
+      window.removeEventListener("storage", updateUsername);
+    };
   }, []);
 
   return (
