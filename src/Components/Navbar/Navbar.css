@@ -19,6 +19,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
+    z-index: 1000; /* Ensure navbar stays on top */
 }
 
 /* Styling for the dropdown menu */
@@ -50,7 +51,7 @@ nav {
 .dropdown-menu li {
     display: block;
     width: 150px;
-    padding:5px;
+    padding: 5px;
 }
 
 /* Styling for links in the dropdown menu */
@@ -93,10 +94,9 @@ nav {
     gap: 1rem;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 700;      /* Choose a weight based on your design */
+    font-weight: 700;
     font-style: normal;
-    font-variation-settings:
-    "wdth" 100;
+    font-variation-settings: "wdth" 100;
 }
 
 /* Styling for individual links in the navigation */
@@ -104,11 +104,107 @@ nav {
     padding: 0 1rem;
     color: #0d213f;
     transition: 0.3s;
+    text-decoration: none;
 }
 
 /* Hover effect for individual links in the navigation */
 .link a:hover {
     color: #3685fb;
+}
+
+/* Profile Dropdown Styles - NEW */
+.profile-dropdown {
+    position: relative;
+}
+
+.profile-menu {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.profile-menu:hover {
+    background-color: rgba(54, 133, 251, 0.1);
+}
+
+.navbar-username {
+    font-weight: 700;
+    color: #3685fb;
+    user-select: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.95rem;
+}
+
+.profile-dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 180px;
+    margin-top: 8px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    padding: 0;
+}
+
+.profile-dropdown .dropdown-menu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    text-align: left;
+    background: none;
+    border: none;
+    color: #0d213f;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+    color: #3685fb;
+}
+
+.dropdown-item:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.logout-item {
+    border-radius: 0 0 8px 8px;
+    color: #d32f2f;
+    font-weight: 600;
+}
+
+.logout-item:hover {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 0;
+    border: none;
 }
 
 /* Media queries for mobile responsiveness */
@@ -142,7 +238,37 @@ nav {
         border-radius: 0.5rem;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         z-index: 999;
-        animation: slideDown 0.5s ease-in-out; /* Animation effect */
+        animation: slideDown 0.5s ease-in-out;
+    }
+
+    /* Mobile responsive for profile dropdown */
+    .profile-dropdown .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        margin-top: 10px;
+        background: transparent;
+        transform: none;
+        opacity: 1;
+    }
+
+    .profile-dropdown .dropdown-menu.show {
+        display: block;
+    }
+
+    .dropdown-item {
+        padding: 10px 20px;
+        color: #0d213f;
+    }
+
+    .dropdown-divider {
+        margin: 8px 20px;
+        background-color: #e0e0e0;
+    }
+
+    .profile-menu {
+        justify-content: center;
+        width: 100%;
     }
 }
 
@@ -160,48 +286,46 @@ nav {
 
 /* Button styles */
 .btn1 {
-    padding:1em;
+    padding: 1em;
     border: 2px solid #3685fb;
     background-color: #094067;
     color: #fffffe;
     border-radius: 50px;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 700;      /* Choose a weight based on your design */
+    font-weight: 700;
     font-style: normal;
-    font-variation-settings:
-    "wdth" 100;
+    font-variation-settings: "wdth" 100;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .btn1:hover {
-    background-color: #3685fb; /* Hover effect */
-    color: white; /* Hover effect */
+    background-color: #3685fb;
+    color: white;
 }
 
 .btn2 {
-    padding:1em;
-    border: 2px solid #3685fb;
-    background-color: #094067;
-    color: #fffffe;
+    padding: 1em;
     border: 2px solid #3685fb;
     background-color: white;
     color: black;
     border-radius: 50px;
-    height:30px;
-    display:flex; /* Align items and justify content */
-    align-items:center; /* Align items and justify content */
-    justify-content:center; /* Align items and justify content */
-    margin-top:3px; /* Margin from top */
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3px;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 700;      /* Choose a weight based on your design */
+    font-weight: 700;
     font-style: normal;
-    font-variation-settings:
-    "wdth" 100;
+    font-variation-settings: "wdth" 100;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .btn2:hover {
-    background-color:#3685fb; /* Hover effect */
-    color:white; /* Hover effect */
+    background-color: #3685fb;
+    color: white;
 }
-  

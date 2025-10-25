@@ -24,8 +24,30 @@ const Navbar = () => {
 
     setIsLoggedIn(false);
     setUsername("");
+    setShowDropdown(false);
     window.location.reload();
   };
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      if (!e.target.closest('.profile-dropdown')) {
+        setShowDropdown(false);
+      }
+    };
+
+    if (showDropdown) {
+      document.addEventListener('click', closeDropdown);
+    }
+
+    return () => {
+      document.removeEventListener('click', closeDropdown);
+    };
+  }, [showDropdown]);
 
   useEffect(() => {
     const storedEmail = sessionStorage.getItem("email");
@@ -74,14 +96,26 @@ const Navbar = () => {
 
         {isLoggedIn ? (
           <>
-            <li className="link">
-              {/* Display username extracted from email */}
-              <span className="navbar-username">{username && `Welcome ${username.charAt(0).toUpperCase() + username.slice(1)}`}</span>
-            </li>
-            <li className="link">
-              <button className="btn2" onClick={handleLogout}>
-                Logout
-              </button>
+            <li className="link profile-dropdown">
+              {/* Dropdown for logged-in user */}
+              <div className="profile-menu" onClick={toggleDropdown}>
+                <span className="navbar-username">
+                  Welcome, {username && username.charAt(0).toUpperCase() + username.slice(1)}
+                </span>
+                <i className={`fa fa-chevron-${showDropdown ? 'up' : 'down'}`} style={{ marginLeft: '5px', fontSize: '12px' }}></i>
+              </div>
+              
+              {showDropdown && (
+                <div className="dropdown-menu show">
+                  <Link to="/profile" className="dropdown-item" onClick={() => setShowDropdown(false)}>
+                    Your Profile
+                  </Link>
+                  <div className="dropdown-divider"></div>
+                  <button className="dropdown-item logout-item" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </div>
+              )}
             </li>
           </>
         ) : (
