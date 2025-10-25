@@ -1,7 +1,7 @@
 import React from "react";
 import "./ReportsLayout.css";
 
-// Dummy data: Use only the doctor names & specialties for demo purposes
+// Table data (for display only)
 const reports = [
   {
     id: 1,
@@ -14,28 +14,21 @@ const reports = [
     speciality: "Dermatologist",
   },
   {
-    id: 3,
-    doctorName: "Dr. Mike Jones",
-    speciality: "Orthopedic Surgeon",
+  id: 3,
+  doctorName: "Dr. Mike Jones",
+  speciality: "Orthopedic Surgeon",
   },
   {
-    id: 4,
-    doctorName: "Dr. Luke Smith",
-    speciality: "General Physician",
-  },
-  {
-    id: 5,
-    doctorName: "Dr. Jane Williams",
-    speciality: "Gynecologist/Obstetrician",
-  },
-  {
-    id: 6,
-    doctorName: "Dr. Brad Wade",
-    speciality: "Dentist",
+  id: 4,
+  doctorName: "Dr. Luke Smith",
+  speciality: "General Physician",
   }
 ];
 
 const ReportsLayout = () => {
+  // Define the public path for the PDF report
+  const pdfURL = "/patient_report.pdf"; // file stored in public folder
+
   return (
     <div className="reports-layout-container">
       <h1 className="reports-title">Reports</h1>
@@ -50,16 +43,31 @@ const ReportsLayout = () => {
           </tr>
         </thead>
         <tbody>
-          {reports.map((report, idx) => (
+          {reports.map((report, index) => (
             <tr key={report.id}>
-              <td>{idx + 1}</td>
+              <td>{index + 1}</td>
               <td>{report.doctorName}</td>
               <td>{report.speciality}</td>
               <td>
-                <button className="report-btn view-btn">View Report</button>
+                {/* Opens PDF in a new tab */}
+                <a
+                  href={pdfURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="report-btn view-btn"
+                >
+                  View Report
+                </a>
               </td>
               <td>
-                <button className="report-btn download-btn">Download Report</button>
+                {/* Downloads the PDF file */}
+                <a
+                  href={pdfURL}
+                  download="patient_report.pdf"
+                  className="report-btn download-btn"
+                >
+                  Download Report
+                </a>
               </td>
             </tr>
           ))}
