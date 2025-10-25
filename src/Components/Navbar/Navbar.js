@@ -114,6 +114,9 @@ const Navbar = () => {
                   <Link to="/profile" className="dropdown-item" onClick={() => setShowDropdown(false)}>
                     Your Profile
                   </Link>
+                  <Link to="/reports" className="dropdown-item" onClick={() => setShowDropdown(false)}>
+                    Your Reports
+                  </Link>
                   <div className="dropdown-divider"></div>
                   <button className="dropdown-item logout-item" onClick={handleLogout}>
                     Logout
