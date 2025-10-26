@@ -1,9 +1,10 @@
 .review-container {
   margin: 140px auto;
   max-width: 1200px;
-  background: #fff;
-  border-radius: 8px;
-  padding: 25px;
+  background-color:#F0F8FF;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+   padding: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 

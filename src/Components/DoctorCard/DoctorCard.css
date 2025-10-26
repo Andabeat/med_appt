@@ -1,8 +1,10 @@
 .doctor-card-container {
     width: 300px;
     height: 100%;
+    background-color:#F0F8FF;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 10px;
+    padding: 20px;
     overflow: hidden;
     display: inline-block;
     margin: 10px;
@@ -88,9 +90,9 @@
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: #F8F8FF;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   max-width: 400px;
   text-align: center;
