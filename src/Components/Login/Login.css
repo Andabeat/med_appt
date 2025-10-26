@@ -1,10 +1,23 @@
 /* Styles for the main container */
 .container {
-    max-width: 900px; /* Maximum width of the container */
+    max-width: 800px; /* Maximum width of the container */
     margin: 0 auto; /* Center the container horizontally */
     padding: 40px; /* Padding inside the container */
     margin-top: 10%; /* Top margin of 10% */
 }
+
+.login-grid {
+    margin-top: 60px;
+    background-color:#F0F8FF;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.login-grid .login-text h2 {
+    font-size: 2rem;
+}
+
 .login-text {
     text-align:center;
 }

@@ -11,10 +11,18 @@ const Sign_Up = () => {
   const [showerr, setShowerr] = useState([]);
   const navigate = useNavigate();
 
+  // Handles form field reset
+  const handleReset = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setPassword('');
+    setShowerr([]);
+  };
+
   const register = async (e) => {
     e.preventDefault();
-    setShowerr([]); // clear previous errors before new submit
-
+    setShowerr([]);
     try {
       const response = await fetch(`${API_URL}/api/auth/register`, {
         method: 'POST',
@@ -22,37 +30,25 @@ const Sign_Up = () => {
         body: JSON.stringify({ name, email, password, phone }),
       });
 
-      // Debug info to check what comes back from backend
-      console.log("Status:", response.status);
       const json = await response.json();
-      console.log("Response from server:", JSON.stringify(json, null, 2));
-
       if (json.authtoken) {
-        // Extract username from email before '@'
         const username = email.split('@')[0];
-
-        // Save user details in session
         sessionStorage.setItem('auth-token', json.authtoken);
         sessionStorage.setItem('name', name);
         sessionStorage.setItem('username', username);
         sessionStorage.setItem('phone', phone);
         sessionStorage.setItem('email', email);
-
-        // Redirect to home and refresh
         navigate('/');
         window.location.reload();
       } 
       else if (json.errors) {
-        // Backend returned array of validation messages
         const messages = json.errors.map((err) => err.msg);
         setShowerr(messages);
       } 
       else if (json.error) {
-        // Backend returned single error
         setShowerr([json.error]);
       }
     } catch (err) {
-      console.error("Error in register:", err);
       setShowerr(['Failed to connect to server. Please try again later.']);
     }
   };
@@ -68,7 +64,6 @@ const Sign_Up = () => {
               <Link to="/login" style={{ color: '#2190FF' }}>Login</Link>
             </span>
           </div>
-
           <form method="POST" onSubmit={register}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
@@ -82,7 +77,6 @@ const Sign_Up = () => {
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
@@ -95,7 +89,6 @@ const Sign_Up = () => {
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="phone">Phone</label>
               <input
@@ -108,7 +101,6 @@ const Sign_Up = () => {
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
@@ -121,12 +113,23 @@ const Sign_Up = () => {
                 required
               />
             </div>
-
-            <button className="btn btn-primary" type="submit">
-              Sign Up
-            </button>
-
-            {/* Display error messages */}
+            <div className="btn-group" style={{ width: '100%' }}>
+              <button
+                type="submit"
+                className="btn btn-primary mb-2 mr-1 waves-effect waves-light"
+                style={{ width: '100%' }}
+              >
+                Sign Up
+              </button>
+              <button
+                type="button"
+                className="btn btn-danger mb-2 ml-1 waves-effect waves-light"
+                style={{ width: '100%', marginTop: '10px' }}
+                onClick={handleReset}
+              >
+                Reset
+              </button>
+            </div>
             {showerr.length > 0 && (
               <div className="err" style={{ color: 'red', marginTop: '1rem' }}>
                 {showerr.map((msg, index) => (

@@ -1,4 +1,4 @@
-// Following code has been commented with appropriate comments for your reference.
+// Login.js
 import React, { useState, useEffect } from 'react';
 import './Login.css'; // optional: apply CSS as per your design
 import { Link, useNavigate } from 'react-router-dom';
@@ -19,10 +19,15 @@ const Login = () => {
     }
   }, [navigate]);
 
+  // Function to reset form fields (to clear inputs)
+  const handleReset = () => {
+    setEmail('');
+    setPassword('');
+  };
+
   // Function to handle login form submission and API call
   const login = async (e) => {
     e.preventDefault();
-
     try {
       const res = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
@@ -36,8 +41,6 @@ const Login = () => {
       });
 
       const json = await res.json();
-      console.log("Response from server:", json);
-
       if (json.authtoken) {
         // If authentication is successful, store data in sessionStorage
         sessionStorage.setItem('auth-token', json.authtoken);
@@ -86,7 +89,6 @@ const Login = () => {
           <form onSubmit={login}>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              {/* Email input field */}
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -100,7 +102,6 @@ const Login = () => {
               />
             </div>
 
-            {/* Password input (matches sample solution) */}
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
@@ -116,12 +117,21 @@ const Login = () => {
               />
             </div>
 
-            <div className="btn-group">
+            <div className="btn-group" style={{ width: '100%' }}>
               <button
                 type="submit"
                 className="btn btn-primary mb-2 mr-1 waves-effect waves-light"
+                style={{ width: '100%' }}
               >
                 Login
+              </button>
+              <button
+                type="button"
+                className="btn btn-danger mb-2 ml-1 waves-effect waves-light"
+                style={{ width: '100%', marginTop: '10px' }}
+                onClick={handleReset}
+              >
+                Reset
               </button>
             </div>
           </form>
@@ -132,3 +142,4 @@ const Login = () => {
 };
 
 export default Login;
+

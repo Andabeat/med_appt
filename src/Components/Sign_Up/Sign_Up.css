@@ -1,7 +1,7 @@
 /* Styles for the container element */
 .container {
-    max-width: 900px; /* Set maximum width for the container */
-    margin: 0 auto; /* Center the container horizontally */
+    max-width: 800px; /* Set maximum width for the container */
+    margin: 140px auto; /* Center the container horizontally */
     padding: 40px; /* Add padding inside the container */
     margin-top: 10%; /* Set top margin as a percentage of the viewport height */
     overflow: hidden; /* Hide any overflowing content */
@@ -22,6 +22,10 @@
     grid-template-columns: 0.1fr 1.5fr 8fr; /* Define columns with fractional widths */
     grid-gap: 10px; /* Set the gap between grid items */
     margin-top: 60px;
+    background-color:#F0F8FF;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
 }
 
 /* Styles for the main signup text */
@@ -45,7 +49,7 @@
 
 /* Styles for the signup form section */
 .signup-form {
-    grid-column: 2 / 4; /* Span from second to fourth column */
+    grid-column: 1 / 4; /* Span from second to fourth column */
 }
 
 /* Styles for the overall signup container */
