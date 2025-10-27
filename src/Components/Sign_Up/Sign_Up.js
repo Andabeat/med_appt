@@ -22,6 +22,22 @@ const Sign_Up = () => {
 
   const register = async (e) => {
     e.preventDefault();
+    const errorMessages = [];
+
+    // Phone: Must be exactly 10 digits
+    if (!/^\d{10}$/.test(phone)) {
+      errorMessages.push('Phone number must be exactly 10 digits.');
+    }
+    // Password: minimum 8 characters, any combo
+    if (password.length < 8) {
+      errorMessages.push('Password must be at least 8 characters.');
+    }
+
+    if (errorMessages.length > 0) {
+      setShowerr(errorMessages);
+      return; // Do not submit if client-side validation fails
+    }
+
     setShowerr([]);
     try {
       const response = await fetch(`${API_URL}/api/auth/register`, {
@@ -40,12 +56,10 @@ const Sign_Up = () => {
         sessionStorage.setItem('email', email);
         navigate('/');
         window.location.reload();
-      } 
-      else if (json.errors) {
+      } else if (json.errors) {
         const messages = json.errors.map((err) => err.msg);
         setShowerr(messages);
-      } 
-      else if (json.error) {
+      } else if (json.error) {
         setShowerr([json.error]);
       }
     } catch (err) {
@@ -93,13 +107,18 @@ const Sign_Up = () => {
               <label htmlFor="phone">Phone</label>
               <input
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => setPhone(e.target.value.replace(/\D/, ''))}
                 type="tel"
                 id="phone"
                 className="form-control"
                 placeholder="Enter your phone number"
+                pattern="\d{10}"
+                maxLength={10}
                 required
               />
+              <small className="form-text text-muted">
+                Phone number must be exactly 10 digits.
+              </small>
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
