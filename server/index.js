@@ -7,7 +7,8 @@ const PORT = process.env.PORT || 8181;
 // STEP 1: CORS Setup - Manual middleware for best reliability in labs
 const allowedOrigins = [
   'https://romina1-8080.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai',
-  'https://romina1-8181.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+  'https://romina1-8181.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai',
+  'https://romina1-3000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
 ];
 
 // Manual CORS middleware (most reliable)
